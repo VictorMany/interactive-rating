@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Interactive rating component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+    @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
+    .card{
+      background-color: hsl(213, 19%, 18%);
+      width: 315px;
+      height: 315px;
+      border-radius: 2rem;
+      padding: 2rem;
+      align-self: center;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: space-between;
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+    .card-2{
+      background-color: hsl(213, 19%, 18%);
+      width: 315px;
+      height: 315px;
+      border-radius: 2rem;
+      padding: 2rem;
+      align-self: center;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: space-between;
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      display: none;
+    }
+    .card__title{
+      color: hsl(0, 0%, 100%);
+      font-weight: 400;
+      font-size: 22px;
+      margin-top: 1.5rem;
+    }
+    .card2__title{
+      color: hsl(0, 0%, 100%);
+      font-weight: 400;
+      font-size: 22px;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    .card__description{
+      color: hsl(217, 12%, 63%);
+      font-size: 14px;
+      line-height: 23px;
+    }
+    .card2__description{
+      color: hsl(217, 12%, 63%);
+      font-size: 15px;
+      text-align: center;
+      line-height: 23px;
+    }
+    .card__steps{
+      width: 100%;
+      flex-direction: row;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .step__button{
+      color: hsl(217, 12%, 63%);
+      background-color: #2C323A;
+      width: 45px;
+      height: 45px;
+      padding: 0.5rem;
+      border-radius: 50%;
+      flex-direction: row;
+      display: flex;
+      justify-content: center;
+      border-width: 0ch;
+    }
+    .step__button:hover{
+      background-color: hsl(25, 97%, 53%);
+      color: hsl(0, 0%, 100%);;
+    }
+    .step{
+      align-self: center;
+    }
+    .card_submit{
+      background-color: hsl(25, 97%, 53%);
+      color: hsl(0, 0%, 100%);
+      font-size: 20px;
+      font-variant-caps: all-petite-caps;
+      width: 100%;
+      border-radius: 2rem;
+      border-width: 0ch;
+      padding: 0.6rem;
+      font-family: 'Overpass', sans-serif;
+      letter-spacing: 2px;
+    }
+    .star{
+      align-self: center;
+    }
+    .img_ilustration_container{
+      width: 100%;
+      flex-direction: row;
+      display: flex;
+      justify-items: center;
+      justify-content: center;
+    }
+    .img_ilustration{
+      align-self: center;
+    }
+    .star__container{
+      background-color: #2C323A;
+      width: 35px;
+      height: 35px;
+      padding: 0.5rem;
+      border-radius: 50%;
+      flex-direction: row;
+      display: flex;
+      justify-items: center;
+      justify-content: center;
+    }
+    .badge__container{
+      width: 100%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+    .card__star{
+      width: 100%;
+    }
+    .active_class{
+      background-color: hsl(216, 12%, 54%);
+      color: white;
+    }
+    .card2_badge{
+      color: hsl(25, 97%, 53%);
+      background-color: #2C323A;
+      border-radius: 2rem;
+      padding: 0.5rem;
+      font-size: 13px;
+      width: fit-content;
+      margin-top: 2rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    body, html{
+      background-color: hsl(216, 12%, 8%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Overpass', sans-serif;
+      justify-content: center;
+    }
+    /* Estilos móvil/celular */
+    @media all and (min-width: 701px) {
+      .card{
+        width: 315px;
+        height: 315px;
+      }
+      .card-2{
+        width: 315px;
+        height: 315px;
+      }
+    }
+
+    @media all and (max-width: 701px) {
+      .card{
+        width: 290px;
+        height: 310px;
+      }
+      .card-2{
+        width: 290px;
+        height: 310px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Rating state start -->
+
+  <div class="card" id="dialog1">
+    <div class="card__star">
+      <div class="star__container">
+        <img class="star" src="./images/icon-star.svg" alt="star">
+      </div>
+    </div>
+    <div class="card__title">
+      <label>How did we do?</label>
+    </div>
+    <div class="card__description">
+      <p>Please let us know how we did with your support request. All feedback is appreciated 
+        to help us improve our offering!</p>
+    </div>
+    <div class="card__steps">
+      <button class="step__button" id="1" onclick="onclickFunction('1')">
+        <p class="step">1</p>
+      </button>
+      <button class="step__button" id="2" onclick="onclickFunction('2')">
+        <p class="step">2</p>
+      </button>
+      <button class="step__button" id="3" onclick="onclickFunction('3')">
+        <p class="step">3</p>
+      </button>
+      <button class="step__button" id="4" onclick="onclickFunction('4')">
+        <p class="step">4</p>
+      </button>
+      <button class="step__button" id="5" onclick="onclickFunction('5')">
+        <p class="step">5</p>
+      </button>
+    </div>
+    <button class="card_submit" onclick="onSubmit()">
+      Submit
+    </button>
+  </div>
+
+
+  <div class="card-2" id="dialog2">
+    <div class="card__star">
+      <div class="img_ilustration_container">
+        <img class="img_ilustration" src="./images/illustration-thank-you.svg" alt="thank you">
+      </div>
+    </div>
+    <div class="badge__container">
+      <p class="card2_badge"></p>
+    </div>
+    <div class="card2__title">
+      <label>Thank you!</label>
+    </div>
+    <div class="card2__description">
+      <p>We appreciate you taking the time to give a rating. If you ever need more support, 
+        don’t hesitate to get in touch!</p>
+    </div>
+  </div>
+  <!--
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+-->
+</body>
+</html>
+
+<script>
+  let grade = 0
+  let button
+
+  let removeClass = () => {
+    let buttons = document.getElementsByClassName('active_class')
+    console.log(buttons)
+    if(buttons.length > 0)
+    buttons[0].classList.remove('active_class')
+  }
+  let onclickFunction = (id) => {
+    grade = id
+    removeClass()
+    button = document.getElementById(id)
+    button.classList.add('active_class')
+  }
+
+  let onSubmit = () => {
+    let dialog1 = document.getElementById('dialog1')
+    let dialog2 = document.getElementById('dialog2')
+    let badge = document.getElementsByClassName('card2_badge')
+    dialog1.style.display = 'none'
+    dialog2.style.display = 'block'
+    badge[0].innerText = 'You selected '+ grade + ' out of 5'
+  }
+</script>
+
+
+<!--
+  # Front-end Style Guide
+
+## Layout
+
+The designs were created to the following widths:
+
+- Mobile: 375px
+- Desktop: 1440px
+
+## Colors
+
+### Primary
+
+- Orange: hsl(25, 97%, 53%)
+
+### Neutral
+
+- White: hsl(0, 0%, 100%)
+- Light Grey: hsl(217, 12%, 63%)
+- Medium Grey: hsl(216, 12%, 54%)
+- Dark Blue: hsl(213, 19%, 18%)
+- Very Dark Blue: hsl(216, 12%, 8%)
+
+## Typography
+
+### Body Copy
+
+- Font size (paragraph): 15px
+
+### Font
+
+- Family: [Overpass](https://fonts.google.com/specimen/Overpass)
+- Weights: 400, 700
+
+-->
