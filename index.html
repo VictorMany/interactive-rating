@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,10 +11,12 @@
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
+
+
     .attribution { font-size: 11px; text-align: center; width: 100%; color: white; position: absolute; bottom: 5rem;}
     .attribution a { color: hsl(25, 97%, 53%); }
 
-    @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
     .card{
       background-color: #202630;
       width: 315px;
@@ -89,14 +92,12 @@
       flex-direction: row;
       display: flex;
       justify-content: center;
+      align-items: center;
       border-width: 0ch;
     }
     .step__button:hover{
       background-color: hsl(25, 97%, 53%);
       color: hsl(0, 0%, 100%);;
-    }
-    .step{
-      align-self: center;
     }
     .card_submit{
       background-color: hsl(25, 97%, 53%);
@@ -194,7 +195,7 @@
 
   <!-- Rating state start -->
 
-  <div class="card" id="dialog1">
+  <div role="card1" class="card" id="dialog1">
     <div class="card__star">
       <div class="star__container">
         <img class="star" src="./images/icon-star.svg" alt="star">
@@ -209,19 +210,19 @@
     </div>
     <div class="card__steps">
       <button class="step__button" id="1" onclick="onclickFunction('1')">
-        <p class="step">1</p>
+        1
       </button>
       <button class="step__button" id="2" onclick="onclickFunction('2')">
-        <p class="step">2</p>
+        2
       </button>
       <button class="step__button" id="3" onclick="onclickFunction('3')">
-        <p class="step">3</p>
+        3
       </button>
       <button class="step__button" id="4" onclick="onclickFunction('4')">
-        <p class="step">4</p>
+        4
       </button>
       <button class="step__button" id="5" onclick="onclickFunction('5')">
-        <p class="step">5</p>
+        5
       </button>
     </div>
     <button class="card_submit" onclick="onSubmit()">
@@ -230,7 +231,7 @@
   </div>
 
 
-  <div class="card-2" id="dialog2">
+  <div role="card2" class="card-2" id="dialog2">
     <div class="card__star">
       <div class="img_ilustration_container">
         <img class="img_ilustration" src="./images/illustration-thank-you.svg" alt="thank you">
@@ -248,7 +249,7 @@
     </div>
   </div>
   
-  <div class="attribution">
+  <div role="attribution" class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="https://portfolio-vic-projects.vercel.app" target="_blank">Víctor Fuentes</a>.
   </div>
